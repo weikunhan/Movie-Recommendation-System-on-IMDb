@@ -45,7 +45,7 @@ with open(filename1, "r") as fp1:
             if(line.count(split) >= 5):
                 count1 += 1
                 file.write(line)
-                print("The %dth actor with %d movies" % (count1, line.count(split)))
+                #print("The %dth actor with %d movies" % (count1, line.count(split)))
     file.close()
 fp1.close()
 
@@ -61,7 +61,7 @@ with open(filename2, "r") as fp2:
             if(line.count(split) >= 5):
                 count2 += 1
                 file.write(line)
-                print("The %dth actress with %d movies" % (count2, line.count(split)))
+                #print("The %dth actress with %d movies" % (count2, line.count(split)))
     file.close()
 fp1.close()
 
