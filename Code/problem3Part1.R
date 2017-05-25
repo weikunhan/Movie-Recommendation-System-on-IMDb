@@ -23,7 +23,7 @@ sorted_pr = sort(pr$vector, decreasing = TRUE, index.return = TRUE)
 write.table(sorted_pr[[1]], file='pagerank_score.txt', col.names = FALSE)
 
 # Print information
-cat("-------------------------Processing Finshed 3----------------------------------\n",
+cat("-------------------------Processing Finshed 1----------------------------------\n",
     "Run pagerank algorithm on the actor/actress network successfully!\n",
     "The first col in datesat is the ID for the artiest\n",
     "The second col in datesat is the pagerank score for the artiest\n",
