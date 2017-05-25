@@ -20,7 +20,7 @@ pr = page.rank(graph, directed = TRUE, damping = 0.85)
 sorted_pr = sort(pr$vector, decreasing = TRUE, index.return = TRUE)
 
 # Store data into .txt file
-write.table(sorted_pr[[1]], file='pagerank_score.txt', col.names = FALSE)
+write.table(sorted_pr[[1]], file = "~/Documents/project_2_data/pagerank_score.txt", col.names = FALSE)
 
 # Print information
 cat("-------------------------Processing Finshed 1----------------------------------\n",
