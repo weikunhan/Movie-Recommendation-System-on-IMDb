@@ -42,6 +42,8 @@ for line in filename1.readlines():
     tokens[0] = artist_id
 
     # Start from 1 because the index 0 is artist ID (the node ID in graph)
+    # movie_dict = {'movie_name1':[ID, artist1, artist2], 'movie_name2':[],...}
+    # artist_dict = {'artist_name1':[ID, movie1, movie2], 'artist_name2':[]...}
     for i in range(1, len(tokens)):
         movie = tokens[i]
         year = re.search(r'\(\d\d\d\d\)|\(\?\?\?\?\)', movie)
@@ -55,8 +57,8 @@ for line in filename1.readlines():
             movie_dict[tokens[i]].append(name)
 	artist_dict[name] = tokens
 	artist_id += 1
-#print("Artist dictionary has been initialized successfully with length %d!" % len(artist_dict))
-#print("New movie dictionary has been initialized successfully with length %d!" % len(movie_dict))
+#print("Artist dictionary has been created successfully with length %d!" % len(artist_dict))
+#print("New movie dictionary has been created successfully with length %d!" % len(movie_dict))
 
 # Construct edge dictionary
 edge_dict = {}
@@ -70,7 +72,7 @@ for people1 in artist_dict:
                 edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] += 1.0 / (len(artist_dict[people1]) - 1)
             else:
                 edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
-#print("Edge dictionary has been initialized successfully with length %d!" % len(edge_dict))
+#print("Edge dictionary has been created successfully with length %d!" % len(edge_dict))
 
 # Construct a weighted directed graph
 count = 0
