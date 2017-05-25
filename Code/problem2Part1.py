@@ -27,32 +27,32 @@ filename3 = open("./artist_graph.txt", "w")
 movie_dict = {}
 movie_id = 0
 for line in filename2.readlines():
-	tokens = line.split("\t\t")
+    tokens = line.split("\t\t")
     moive = tokens[0]
-	movie_dict[movie] = [movie_id]
-	movie_id += 1
+    movie_dict[movie] = [movie_id]
+    movie_id += 1
 #print("Movie dictionary has been initialized successfully with length %d!" % len(movie_dict))
 
 # Construct actor dictionary
 artist_dict = {}
 artist_id = 0
 for line in filename1.readlines():
-	tokens = line.split("\t\t")
-	name = tokens[0]
-	tokens[0] = artist_id
+    tokens = line.split("\t\t")
+    name = tokens[0]
+    tokens[0] = artist_id
 
     # Start from 1 because the index 0 is artist ID (the node ID in graph)
-	for i in range(1, len(tokens)):
-		movie = tokens[i]
-		year = re.search(r'\(\d\d\d\d\)|\(\?\?\?\?\)', movie)
-		if year:
-			end = movie.find(year.group())
-			tokens[i] = movie[:end + 6]
-		if movie_dict.has_key(tokens[i]):
-			movie_dict[tokens[i]].append(name)
-		else:
-			movie_dict[tokens[i]] = [len(movie_dict)]
-			movie_dict[tokens[i]].append(name)
+    for i in range(1, len(tokens)):
+        movie = tokens[i]
+        year = re.search(r'\(\d\d\d\d\)|\(\?\?\?\?\)', movie)
+        if year:
+            end = movie.find(year.group())
+            tokens[i] = movie[:end + 6]
+        if movie_dict.has_key(tokens[i]):
+            movie_dict[tokens[i]].append(name)
+        else:
+            movie_dict[tokens[i]] = [len(movie_dict)]
+            movie_dict[tokens[i]].append(name)
 	artist_dict[name] = tokens
 	artist_id += 1
 #print("Artist dictionary has been initialized successfully with length %d!" % len(artist_dict))
@@ -61,25 +61,23 @@ for line in filename1.readlines():
 # Construct edge dictionary
 edge_dict = {}
 for people1 in artist_dict:
- 	for i in range(1,len(artist_dict[people1])):
-		movie = artist_dict[people1][i]
- 		for people2 in movie_dict[movie]:
- 			# don't count the actor himself
- 			# 1st element of value of movieDict is set as movieId, skip this value
- 			if people2 == people1 or isinstance(people2, int):
- 				continue
- 			if edge_dict.has_key((artist_dict[people1][0], artist_dict[people2][0])):
- 				edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] += 1.0 / (len(artist_dict[people1]) - 1)
- 			else:
- 				edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
+    for i in range(1,len(artist_dict[people1])):
+        movie = artist_dict[people1][i]
+        for people2 in movie_dict[movie]:
+            if people2 == people1 or isinstance(people2, int):
+                continue
+            if edge_dict.has_key((artist_dict[people1][0], artist_dict[people2][0])):
+                edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] += 1.0 / (len(artist_dict[people1]) - 1)
+            else:
+                edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
 #print("Edge dictionary has been initialized successfully with length %d!" % len(edge_dict))
 
 # Construct a weighted directed graph
 count = 0
 for key in edge_dict:
     count += 1
- 	s = "%d\t%d\t%f\n" % (key[0], key[1], edge_dict[key])
- 	filename3.write(s)
+    s = "%d\t%d\t%f\n" % (key[0], key[1], edge_dict[key])
+    filename3.write(s)
 filename1.close()
 filename2.close()
 filename3.close()
