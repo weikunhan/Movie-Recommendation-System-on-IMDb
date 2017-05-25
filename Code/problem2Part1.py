@@ -21,81 +21,68 @@ filename1 = open("./project_2_data/artist_movies.txt", "r")
 filename2 = open("./project_2_data/movie_genre.txt", "r")
 
 # Target file we want to create
-file1 = open("./artist_graph.txt", "w")
-file2 = open("./project_2_data/moive_graph.txt", "w")
+filename3 = open("./artist_graph.txt", "w")
 
-
-#construct movie dictionary
-movieDict={}
-movieId=0
+# Construct movie dictionary
+movie_dict = {}
+movie_id = 0
 for line in filename2.readlines():
 	tokens = line.split("\t\t")
-	movieDict[tokens[0]]=[movieId]
-	movieId+=1
-#print('movie dictionary has been initialized successfully with length %d!'%len(movieDict))
+    moive = tokens[0]
+	movie_dict[movie] = [movie_id]
+	movie_id += 1
+#print("Movie dictionary has been initialized successfully with length %d!" % len(movie_dict))
 
-#construct actor dictionary
-actDict={}
-actId=0
+# Construct actor dictionary
+artist_dict = {}
+artist_id = 0
 for line in filename1.readlines():
 	tokens = line.split("\t\t")
 	name = tokens[0]
-	# the starting element of the array is set as the actor's ID, which is also used as node ID
-	tokens[0] = actId
+	tokens[0] = artist_id
 
-	for i in range(1,len(tokens)):
+    # Start from 1 because the index 0 is artist ID (the node ID in graph)
+	for i in range(1, len(tokens)):
 		movie = tokens[i]
 		year = re.search(r'\(\d\d\d\d\)|\(\?\?\?\?\)', movie)
 		if year:
 			end = movie.find(year.group())
-			tokens[i] = movie[:end+6]
-
-		if movieDict.has_key(tokens[i]):
-			movieDict[tokens[i]].append(name)
+			tokens[i] = movie[:end + 6]
+		if movie_dict.has_key(tokens[i]):
+			movie_dict[tokens[i]].append(name)
 		else:
-			movieDict[tokens[i]]=[len(movieDict)]
-			movieDict[tokens[i]].append(name)
-	actDict[name] = tokens
-	actId += 1
-# print actDict
-#print('actDict has been loaded successfully with length %d'%len(actDict))
-#print('movieDict have been loaded successfully with new length %d'%len(movieDict))
+			movie_dict[tokens[i]] = [len(movie_dict)]
+			movie_dict[tokens[i]].append(name)
+	artist_dict[name] = tokens
+	artist_id += 1
+#print("Artist dictionary has been initialized successfully with length %d!" % len(artist_dict))
+#print("New movie dictionary has been initialized successfully with length %d!" % len(movie_dict))
 
-# #---------------------------------------#
-# ###########for problem 1-3#############
-# #---------------------------------------#
-# #add edge into edgeAct, which is a dict
-count = 0
-edgeAct={}
-for key in actDict:
- 	for i in range(1,len(actDict[key])):
-		movie = actDict[key][i]
- 		for people in movieDict[movie]:
+# Construct edge dictionary
+edge_dict = {}
+for people1 in artist_dict:
+ 	for i in range(1,len(artist_dict[people1])):
+		movie = artist_dict[people1][i]
+ 		for people2 in movie_dict[movie]:
  			# don't count the actor himself
  			# 1st element of value of movieDict is set as movieId, skip this value
- 			if people==key or isinstance(people,int):
+ 			if people2 == people1 or isinstance(people2, int):
  				continue
- 			if edgeAct.has_key((actDict[key][0],actDict[people][0])):
- 				edgeAct[(actDict[key][0],actDict[people][0])]+=1.0/(len(actDict[key])-1)
+ 			if edge_dict.has_key((artist_dict[people1][0], artist_dict[people2][0])):
+ 				edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] += 1.0 / (len(artist_dict[people1]) - 1)
  			else:
- 				edgeAct[(actDict[key][0],actDict[people][0])]=1.0/(len(actDict[key])-1)
+ 				edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
+#print("Edge dictionary has been initialized successfully with length %d!" % len(edge_dict))
 
- 	count+=1
-#print('edgeAct has been construct successfully with %d records!'%len(edgeAct))
-
-# #write to file graphAct
+# Construct a weighted directed graph
 count = 0
-for key in edgeAct:
- 	s = '%d\t%d\t%f\n'%(key[0],key[1],edgeAct[key])
- 	file1.write(s)
-
- 	count+=1
-
- 
+for key in edge_dict:
+    count += 1
+ 	s = "%d\t%d\t%f\n" % (key[0], key[1], edge_dict[key])
+ 	filename3.write(s)
 filename1.close()
 filename2.close()
-file1.close()
-file2.close()
+filename3.close()
 
 # Print information
 print("-------------------------Processing Finshed 1----------------------")
@@ -104,4 +91,3 @@ print("The total number of edges in graph is: %d" % count)
 print("The total number of nodes in graph is: %d" % (count / 2))
 print("--------------------------------------------------------------------")
 print()
- 
