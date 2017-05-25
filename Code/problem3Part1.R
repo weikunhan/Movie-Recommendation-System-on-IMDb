@@ -10,7 +10,7 @@
 library("igraph")
 
 # Setup the file path to load data
-file_path <- "~/Documents/project1/facebook_combined.txt"
+file_path <- "~/Documents/project_2_data/artist_graph.txt"
 
 # Load the graph from the path
 graph <- read.graph(file = file_path ,format = "ncol", directed = TRUE)
