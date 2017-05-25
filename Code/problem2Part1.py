@@ -21,7 +21,7 @@ filename1 = open("./project_2_data/artist_movies.txt", "r")
 filename2 = open("./project_2_data/movie_genre.txt", "r")
 
 # Target file we want to create
-filename3 = open("./artist_graph.txt", "w")
+filename3 = open("./project_2_data/artist_graph.txt", "w")
 
 # Construct movie dictionary
 movie_dict = {}
