@@ -1,4 +1,4 @@
-# EE232E Project 2 Problem 3
+# EE232E Project 2 Problem 3 Part 1
 # Name: Weikun Han, Duzhi Chen
 # Date: 5/25/2017
 # Reference:
