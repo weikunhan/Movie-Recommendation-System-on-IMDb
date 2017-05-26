@@ -39,13 +39,13 @@ with open(filename1, "r") as fp1:
 
         # Check each infomation in selected file in the dataset
         for line in fp1:
-            count += 1
         
             # 2 tab in front of moive so make this as conditon
             if(line.count(split) >= 5):
-                count1 += 1
                 file.write(line)
+                count1 += 1
                 #print("The %dth actor with %d movies" % (count1, line.count(split)))
+            count += 1
     file.close()
 fp1.close()
 
@@ -55,13 +55,14 @@ with open(filename2, "r") as fp2:
 
         # Check each infomation in selected file in the dataset
         for line in fp2:
-            count += 1
+
         
             # 2 tab in front of moive so make this as conditon
             if(line.count(split) >= 5):
-                count2 += 1
                 file.write(line)
+                count2 += 1
                 #print("The %dth actress with %d movies" % (count2, line.count(split)))
+            count += 1
     file.close()
 fp1.close()
 
