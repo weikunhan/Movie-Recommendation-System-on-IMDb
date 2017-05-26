@@ -77,9 +77,9 @@ for people1 in artist_dict:
 # Store data into the .txt file
 count = 0
 for key in edge_dict:
-    count += 1
     s = "%d\t%d\t%f\n" % (key[0], key[1], edge_dict[key])
     filename3.write(s)
+    count += 1
 filename1.close()
 filename2.close()
 filename3.close()
