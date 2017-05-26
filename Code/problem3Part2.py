@@ -6,7 +6,7 @@
   - https://google.github.io/styleguide/pyguide.html
   - http://www.imdb.com
  Description:
-  - Show top 50 artist name in pagerank_score.txt
+  - Show top 20 artist name in pagerank_score.txt
 """
 
 from __future__ import print_function
