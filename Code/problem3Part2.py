@@ -17,8 +17,8 @@ print(__doc__)
 print()
 
 # Open the file we create and the file we have
-filename1 = open("./project_2_data/pagerank_score.txt", 'r')
-filename2 = open("./project_2_data/artist_movies.txt", 'r')
+filename1 = open("./pagerank_score.txt", 'r')
+filename2 = open("./project_2_data/artist_movies.txt", "r")
 
 # Target file we want to create
 filename3 = open("./project_2_data/pagerank_name.txt", 'w')
@@ -34,26 +34,26 @@ for line in filename1.readlines():
         index += 1
     node.append(int(line[1:index - 1]))
     score.append(string.atof(line[index + 1:len(line) - 1]))
-#print("Artist ID array has been initialized successfully with length %d!" % len(node))
-#print("Pagerank score array has been initialized successfully with length %d!" % len(score))
+#print("Artist ID array has been created successfully with length %d!" % len(node))
+#print("Pagerank score array has been created successfully with length %d!" % len(score))
+
 
 # Search artist ID in origal artist_movies.txt file
 count = 0
-for i in range(0, 19):
-    count += 1
-    print(count)
-    artist_id = node[i]
-    count1 = 0
-    for line in filename2.readlines():
-        count1 += 1
-        if artist_id == count1:
-            tokens = line.split("\t\t")
+count1 = 0
+number = 20
+for line in filename2.readlines():
+    tokens = line.split('\t\t')
+    for i in range(number):
+        artist_id = node[i]
+        if artist_id == count:
             node[i] = tokens[0]
-            break
-print("Decode top %d artist ID in pagerank_score.txt file into name!" % count)
+            count1 += 1
+    count += 1
+#print("Decode top %d artist ID in pagerank_score.txt file into name!" % count1)
 
 # Store data into the .txt file
-for i in range(0, 19):
+for i in range(number):
     s = "%s\t%s\n" % (node[i], str(score[i]))
     filename3.write(s)
 filename1.close()
