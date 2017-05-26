@@ -10,7 +10,7 @@
 library("igraph")
 
 # Setup the file path to load data
-file_path <- "~/Documents/project1/facebook_combined.txt"
+file_path <- "~/Documents/project_2_data/artist_graph.txt"
 
 # Load the graph from the path
 graph <- read.graph(file = file_path ,format = "ncol", directed = TRUE)
@@ -25,6 +25,6 @@ write.table(sorted_pr[[1]], file='pagerank_score.txt', col.names = FALSE)
 # Print information
 cat("-------------------------Processing Finshed 3----------------------------------\n",
     "Run pagerank algorithm on the actor/actress network successfully!\n",
-    "The first col in datesat is the ID for the artiest\n",
-    "The second col in datesat is the pagerank score for the artiest\n",
+    "The first col in the dataset is the ID for the artiest\n",
+    "The second col in the dataset is the pagerank score for the artiest\n",
     "-------------------------------------------------------------------------------\n")
