@@ -29,7 +29,7 @@ movie_id = 0
 for line in filename2.readlines():
     tokens = line.split("\t\t")
     moive = tokens[0]
-    movie_dict[movie] = [movie_id]
+    movie_dict[moive] = [movie_id]
     movie_id += 1
 #print("Movie dictionary has been initialized successfully with length %d!" % len(movie_dict))
 
@@ -55,8 +55,8 @@ for line in filename1.readlines():
         else:
             movie_dict[tokens[i]] = [len(movie_dict)]
             movie_dict[tokens[i]].append(name)
-     artist_dict[name] = tokens
-     artist_id += 1
+    artist_dict[name] = tokens
+    artist_id += 1
 #print("Artist dictionary has been created successfully with length %d!" % len(artist_dict))
 #print("New movie dictionary has been created successfully with length %d!" % len(movie_dict))
 
@@ -71,7 +71,7 @@ for people1 in artist_dict:
             if edge_dict.has_key((artist_dict[people1][0], artist_dict[people2][0])):
                 edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] += 1.0 / (len(artist_dict[people1]) - 1)
             else:
-                edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
+                edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[people1]) - 1)
 #print("Edge dictionary has been created successfully with length %d!" % len(edge_dict))
 
 # Store data into the .txt file
