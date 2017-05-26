@@ -74,7 +74,7 @@ for people1 in artist_dict:
                 edge_dict[(artist_dict[people1][0], artist_dict[people2][0])] = 1.0 / (len(artist_dict[[people1]]) - 1)
 #print("Edge dictionary has been created successfully with length %d!" % len(edge_dict))
 
-# Construct a weighted directed graph
+# Store data into the .txt file
 count = 0
 for key in edge_dict:
     count += 1
