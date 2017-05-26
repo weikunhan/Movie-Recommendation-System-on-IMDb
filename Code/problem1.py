@@ -6,7 +6,7 @@
   - https://google.github.io/styleguide/pyguide.html
   - http://www.imdb.com
  Description:
-  - Prepare data sets
+  - Prepare datasets
 """
 
 from __future__ import print_function
