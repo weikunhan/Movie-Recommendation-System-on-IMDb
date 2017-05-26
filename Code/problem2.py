@@ -1,5 +1,5 @@
 """
- EE232E Project 2 Problem 2 Part 1
+ EE232E Project 2 Problem 2
  Name: Weikun Han, Duzhi Chen
  Date: 5/21/2017
  Reference:
