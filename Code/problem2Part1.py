@@ -6,7 +6,7 @@
   - https://google.github.io/styleguide/pyguide.html
   - http://www.imdb.com
  Description:
-  - Construct a weighted directed graph for problem 3
+  - Construct a weighted directed graph for the actor/actress network (problem 3)
 """
 
 from __future__ import print_function
