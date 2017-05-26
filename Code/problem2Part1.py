@@ -55,8 +55,8 @@ for line in filename1.readlines():
         else:
             movie_dict[tokens[i]] = [len(movie_dict)]
             movie_dict[tokens[i]].append(name)
-	artist_dict[name] = tokens
-	artist_id += 1
+     artist_dict[name] = tokens
+     artist_id += 1
 #print("Artist dictionary has been created successfully with length %d!" % len(artist_dict))
 #print("New movie dictionary has been created successfully with length %d!" % len(movie_dict))
 
