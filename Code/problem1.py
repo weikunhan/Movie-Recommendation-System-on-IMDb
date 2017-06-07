@@ -12,7 +12,6 @@
 from __future__ import print_function
 import os
 import json
-import unicodedata
 
 # Print information
 print(__doc__)
