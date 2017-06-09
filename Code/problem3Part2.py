@@ -6,7 +6,8 @@
   - https://google.github.io/styleguide/pyguide.html
   - http://www.imdb.com
  Description:
-  - Show top 20 artist name in pagerank_score.txt
+  - Show top 20 actor/actress names base on the pagerank scores 
+    in the actor/actress network
 """
 
 from __future__ import print_function
@@ -17,7 +18,7 @@ print(__doc__)
 print()
 
 # Open the file we create and the file we have
-filename1 = open("./pagerank_score.txt", 'r')
+filename1 = open("./project_2_data/pagerank_score.txt", 'r')
 filename2 = open("./project_2_data/artist_movies.txt", "r")
 
 # Target file we want to create
@@ -62,8 +63,8 @@ filename3.close()
 
 # Print information
 print("-------------------------Processing Finshed 1----------------------")
-print("Decode pagerank_score.txt for the actor/actress network successfully!")
-print("The first col in new dataset is the name for the artiest.")
-print("The second col in new dataset is the pagerank score for the artiest")
+print("Top 20 actor/actress names base on the pagerank scores successfully!")
+print("The first col in new dataset is the name for the actor/actress.")
+print("The second col in new dataset is the pagerank score for the actor/actress")
 print("--------------------------------------------------------------------")
 print()
