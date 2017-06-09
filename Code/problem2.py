@@ -25,7 +25,7 @@ filename3 = open("./project_2_data/artist_graph.txt", "w")
 
 # Construct movie dictionary
 movie_dict = {}
-movie_id = 0
+movie_id = 1
 for line in filename2.readlines():
     tokens = line.split("\t\t")
     moive = tokens[0]
@@ -35,7 +35,7 @@ for line in filename2.readlines():
 
 # Construct actor dictionary
 artist_dict = {}
-artist_id = 0
+artist_id = 1
 for line in filename1.readlines():
     tokens = line.split("\t\t")
     name = tokens[0]
