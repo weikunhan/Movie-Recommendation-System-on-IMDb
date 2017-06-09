@@ -15,9 +15,6 @@ from __future__ import print_function
 print(__doc__)
 print()
 
-count = 245812 * 5
-count2  = 100
-
 
 movie={}
 movie_file=open('movie_feature.txt','w')
@@ -111,11 +108,13 @@ for k in movie_rating.keys():
 	
 			for f in range(0,5):
                                 movie_file.write("%f\t" %pgRank[f][0])
+				count += 1
 			for f in range(0,101):
                                 movie_file.write("%d\t" %top_features[f])
 
                     
                         movie_file.write("%s\n" %movie_rating[k][0])
+			count2 += 1
 			j=j+1
     i=i+1
 
