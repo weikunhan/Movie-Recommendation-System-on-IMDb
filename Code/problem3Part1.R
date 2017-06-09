@@ -10,17 +10,17 @@
 library("igraph")
 
 # Setup the file path to load data
-file_path <- read.table("~/Documents/project_2_data/artist_graph.txt")
+file_path <- "/home/weikun/Documents/project_2_data/artist_graph.txt"
 
 # Load the graph from the path
-graph <- graph.data.frame(file_path, directed = TRUE)
+graph <- read.graph(file = file_path, directed = TRUE, format = "ncol")
 
 # Run pagerank algorithm
-pr <- page.rank(graph)
+pr <- page_rank(graph, directed = TRUE, damping = 0.85)
 sorted_pr <- sort(pr$vector, decreasing = TRUE, index.return = TRUE)
 
 # Store data into .txt file
-write.table(sorted_pr[[1]], file="~/Documents/project_2_data/pagerank_score.txt", col.names = FALSE)
+write.table(sorted_pr[[1]], file = "/home/weikun/Documents/project_2_data/pagerank_score.txt", col.names = FALSE)
 
 # Print information
 cat("-------------------------Processing Finshed 1----------------------------------\n",
