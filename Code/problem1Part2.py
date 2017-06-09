@@ -56,7 +56,6 @@ with open(filename2, "r") as fp2:
         # Check each infomation in selected file in the dataset
         for line in fp2:
 
-        
             # 2 tab in front of moive so make this as conditon
             if(line.count(split) >= 10):
                 file.write(line)
