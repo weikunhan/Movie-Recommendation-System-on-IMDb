@@ -1,0 +1,24 @@
+#===============================================================================
+#Reporter: Weikun Han weikunhan@g.ucla.edu.
+#Product:  igraph R package.
+#Version: R version 3.4.0 (2017-04-21) and RStudio 1.0.143.
+#Component: read.graph function.
+#Platform: PC and MacBook Pro.
+#Operating system: macOS Sierra and Ubuntu 16.04.2 LTS.
+#Priority: P1
+#Severity: critical
+# - application crash, Loss of data.
+#Status:
+# - When you are inputting data use read.graph function for "large" data. 
+# - Use "~/" in front of data path dictionary will hit bug and crash application.
+#===============================================================================
+
+library("igraph")
+
+# Bug example
+file_path = "~/Documents/project_2_data/artist_graph.txt"
+graph = read.graph(file = file_path ,format = "ncol", directed = TRUE)
+
+# Fix exmaple
+file_path = "/home/weikun/Documents/project_2_data/artist_graph.txt"
+graph = read.graph(file = file_path ,format = "ncol", directed = TRUE)
